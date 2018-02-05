@@ -8,6 +8,7 @@ $title = "Tablas de multiplicar"
 <!DOCTYPE <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <title>tablas</title>
 </head>
 <body>
