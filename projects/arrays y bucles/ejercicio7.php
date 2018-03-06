@@ -17,7 +17,9 @@
 </form>
 
 
+
 <?php
+/*
 echo "<pre>De menor a mayor</pre>";
 $numero_elementos=$_GET["num"];
 echo"<h1>$numero_elementos</h1>";
@@ -48,6 +50,7 @@ rsort($temperaturas);
 for ($i=1;$i<count($temperaturas);$i++) {
     echo"<h1>$temperaturas[$i]</h1>";
 }
+*/
 ?>
 
 </body>
