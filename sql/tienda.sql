@@ -23,4 +23,3 @@ CREATE TABLE producto (
 );
 
 INSERT INTO usuario VALUES (1, 'usuario@usuario.es', 'f8032d5cae3de20fcec887f395ec9a6a', 'Usuario');
-INSERT INTO usuario VALUES (2, 'usuario2@usuario.es', '2fb6c8d2f3842a5ceaa9bf320e649ff0', 'Usuario2');
