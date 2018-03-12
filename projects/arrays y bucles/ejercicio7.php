@@ -19,38 +19,39 @@
 
 
 <?php
-/*
-echo "<pre>De menor a mayor</pre>";
-$numero_elementos=$_GET["num"];
-echo"<h1>$numero_elementos</h1>";
+$numero_elementos = $_GET["num"];
 
 
-//array temperaturas
-$temperaturas = array();
-//inicio array temperaturas.
+if (!isset($numero_elementos) || empty($numero_elementos)) die;
+echo "<h2>El numero de elementos es: $numero_elementos</h2>";
 
-$i=0;
-while ($i < $numero_elementos){
-    $temperaturas[$i]=rand(1,30);
+
+// Inicializo el array de temperaturas
+$temperatura = array();
+
+$i = 0;
+while ($i < $numero_elementos) {
+
+    $temperatura[$i] = rand(1, 30);
     $i++;
-}
-//de menor a mayor
-sort($temperaturas);
-for ($i=1;$i<count($temperaturas);$i++) {
-    echo"<h1>$temperaturas[$i]</h1>";
+
 }
 
 
-echo "<pre>De mayor a menor</pre>";
-$numero_elementos=$_GET["num"];
-echo"<h1>$numero_elementos</h1>";
+echo "<h3>Temperaturas  de mayor a menor </h3>";
+rsort($temperatura);
+for ($i = 0; $i < count($temperatura); $i++) {
+    echo "<h1>$temperatura[$i]</h1>";
 
-//de mayor a menor
-rsort($temperaturas);
-for ($i=1;$i<count($temperaturas);$i++) {
-    echo"<h1>$temperaturas[$i]</h1>";
 }
-*/
+
+echo "<h3>Temperaturas de menor a mayor</h3>";
+sort($temperatura);
+for ($i = 0; $i < count($temperatura); $i++) {
+    echo "<h1>$temperatura[$i]</h1>";
+
+}
+
 ?>
 
 </body>
