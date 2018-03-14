@@ -1,59 +1,36 @@
-
 <?php
-session_start();
-include('../config.php');
+include_once("../config.php");
 
-$email = $_POST['email'];
-$password = md5($_POST['password']);
-
-$result = mysqli_query($mysqli, "SELECT * FROM usuario where email='$email' and password='$password'");
-$count=mysqli_num_rows($result);
-if($count >= 1){
-    $_SESSION['canAccess']= true;
-    header('location: dashboard.php');
-}else {
-    $_SESSION['canAccess']= false;
-}
-
-mysqli_close($mysqli);
-
+$query = "SELECT * FROM producto inner join fabricante on producto.codigo_fabricante = fabricante.codigo";
+$result = mysqli_query($mysqli, $query);
+// print_r($result);
 ?>
 
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Mi tienda informatica </title>
+</head>
 
+<body>
+<h3> Productos </h3>
+	<?php
+    echo "<table >";
 
+	while($res = mysqli_fetch_array($result)) {
+		echo "<tr>";
+		echo "<td>".$res['codigo']."</td>";
+        echo "<td>".$res['nombre']."</td>";
+		echo "<td>".$res['precio']."</td>";  
+		echo "<td><img src=\"../".$res['imagen']."\"/></td>";
+        
+        echo "</tr>";
+    }
+    echo "</table>";
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+	mysqli_close($mysqli);
+	?>
 
-    <title>Signin Template for Bootstrap</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="../css/signin.css" rel="stylesheet">
-  </head>
-
-  <body class="text-center">
-    <form class="form-signin" method="POST">
-      <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-      <label for="inputEmail" class="sr-only">Email address</label>
-      <input type="email" name="email" class="form-control" placeholder="Email address" required autofocus>
-      <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" name="password" class="form-control" placeholder="Password" required>
-      <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
-      </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-      <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
-    </form>
-  </body>
+</body>
 </html>
